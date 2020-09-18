@@ -117,11 +117,17 @@ class GoogleTagManager
 	 */
 	public function addDataLayerVariable($name, $value, $index = null)
 	{
+		$data = $value;
+		if ($name)
+		{
+			$data = [$name => $value];
+		}
+		
 		if ($index)
 		{
-			$this->dataLayer[$index] = [$name => $value];
+			$this->dataLayer[$index] = $data;
 		} else {
-			$this->dataLayer[] = [$name => $value];
+			$this->dataLayer[] = $data;
 		}
 
 		return $this;
